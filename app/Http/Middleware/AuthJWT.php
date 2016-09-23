@@ -16,18 +16,19 @@ class AuthJWT
     public function handle($request, \Closure $next)
     {
         try {
-            // 如果用户登陆后的所有请求没有jwt的token抛出异常
-            $user = JWTAuth::toUser($request->input('token'));
-        } catch (Exception $e) {
-            if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
-                return response()->json(['error' => 'Token is invalid']);
-            } else {
-                if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException) {
-                    return response()->json(['error' => 'Token is expired']);
-                } else {
-                    return response()->json(['error' => 'error']);
-                }
-            }
+            $user = JWTAuth::authenticate(JWTAuth::getToken());
+        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+
+        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+
         }
         return $next($request);
     }

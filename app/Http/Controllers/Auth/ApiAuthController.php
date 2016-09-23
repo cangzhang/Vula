@@ -25,17 +25,16 @@ class ApiAuthController extends Controller
     {
         $input = $request->all();
         if (!$token = JWTAuth::attempt($input)) {
-            return response()->json(['result' => '邮箱或密码错误.']);
+            return response()->json(['result' => 'Wrong username or password.']);
         }
         return response()->json(['result' => $token]);
     }
 
     /* get user info */
-    public function getUserDetails(Request $request)
+    public function getUserDetails()
     {
-        $input = $request->all();
-        $user = JWTAuth::toUser($input['token']);
-        return response()->json(['result' => $user]);
+        $user = JWTAuth::authenticate(JWTAuth::getToken());
+        return response()->json($user);
     }
 
 }
