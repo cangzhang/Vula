@@ -16,6 +16,7 @@ class AuthJWT
     public function handle($request, \Closure $next)
     {
         try {
+            // Request header format -> 'Authorization:Bearer {token}'
             $user = JWTAuth::authenticate(JWTAuth::getToken());
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
