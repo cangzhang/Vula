@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\User;
 
 class ApiAuthController extends Controller
 {
@@ -14,7 +14,8 @@ class ApiAuthController extends Controller
     public function register(Request $request)
     {
         $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+//        print_r($input);die();
+        $input['password'] = bcrypt($input['password']);
         User::create($input);
         return response()->json(['result' => true]);
     }
