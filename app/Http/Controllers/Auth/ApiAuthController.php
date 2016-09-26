@@ -48,4 +48,10 @@ class ApiAuthController extends Controller
         return response()->json(['User' => $user, 'status' => 200], 200);
     }
 
+    /* logout */
+    public function logout() {
+        JWTAuth::invalidate(JWTAuth::getToken());
+        return response()->json(['message' => 'You now have logged out.']);
+    }
+
 }
