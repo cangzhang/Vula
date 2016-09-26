@@ -10,7 +10,11 @@ use App\User;
 
 class ApiAuthController extends Controller
 {
-    /* register */
+    /**
+     * register
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function register(Request $request)
     {
         $errors = new \stdClass();
@@ -29,7 +33,11 @@ class ApiAuthController extends Controller
         }
     }
 
-    /* login */
+    /**
+     * login
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request)
     {
         $errors = new \stdClass();
@@ -41,14 +49,20 @@ class ApiAuthController extends Controller
         return response()->json(['token' => $token, 'status' => 200], 200);
     }
 
-    /* get user info */
+    /**
+     * get user info
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getUserDetails()
     {
         $user = JWTAuth::authenticate(JWTAuth::getToken());
         return response()->json(['User' => $user, 'status' => 200], 200);
     }
 
-    /* logout */
+    /**
+     * logout
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function logout() {
         JWTAuth::invalidate(JWTAuth::getToken());
         return response()->json(['message' => 'You now have logged out.']);
