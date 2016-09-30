@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
     return $request->user();
 })->middleware('auth:api');*/
 
-Route::group(['middleware' => ['api', 'cors'], 'prefix' => ''], function () {
+Route::group(['middleware' => ['cors'], 'prefix' => ''], function () {
     Route::post('register', 'Auth\ApiAuthController@register');     // register
     Route::post('login', 'Auth\ApiAuthController@login');           // login
     Route::group(['middleware' => 'jwt.auth'], function () {
