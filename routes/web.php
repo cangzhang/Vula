@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/', '\xzNotes\Note\Controllers\ShellController@mainPage');
+    Route::get('/home', 'HomeController@index');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');

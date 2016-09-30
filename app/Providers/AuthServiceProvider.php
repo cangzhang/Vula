@@ -28,9 +28,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         /* https://laravel-china.org/docs/5.3/passport */
-        Passport::routes();
+        /*Passport::routes();
         Passport::tokensExpireIn(Carbon::now()->addDays(15));
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(30));
-        Passport::pruneRevokedTokens();
+        Passport::pruneRevokedTokens();*/
     }
 }
