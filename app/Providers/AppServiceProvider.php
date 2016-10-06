@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+    	//custom view prefix name
 	    $this->loadViewsFrom(base_path(). '\xzNotes\Note\Views', 'note');
     }
 }
