@@ -11,6 +11,6 @@ class ShellController extends Controller
      */
     public function mainPage()
     {
-        return view('welcome');
+        return view('note::welcome');
     }
 }
