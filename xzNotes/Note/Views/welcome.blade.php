@@ -14,12 +14,8 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
+            <div id="topLink">
+            </div>
 
             <div class="content">
                 <div class="title m-b-md">
@@ -30,12 +26,13 @@
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                 </div>
+                <div class="dialogBtn">
+                    @{{ messge }}
+                </div>
             </div>
         </div>
 
-        <script src="/js/vendor.js"></script>
-        <script src="/js/ele-vendor.js"></script>
         <script src="/js/app.js"></script>
-
+        {{--<script src="/js/note/note.js"></script>--}}
     </body>
 </html>

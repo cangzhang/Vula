@@ -14,7 +14,21 @@ require('./bootstrap');
  */
 
 // Vue.component('example', require('./components/Example.vue'));
-    
-const app = new Vue({
-    el: 'body'
+
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+import App from './App.vue';
+
+Vue.use(ElementUI);
+
+const loginDialog = new Vue({
+    el: '#topLink',
+    render: h => h(App)
+});
+
+const note = new Vue({
+    el: '.dialogBtn',
+    data: {
+        message: 'hello'
+    }
 });

@@ -168,8 +168,9 @@ return [
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
-
+//        Laravel\Passport\PassportServiceProvider::class,
+	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+	    
         /*
          * Application Service Providers...
          */
