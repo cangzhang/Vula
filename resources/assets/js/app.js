@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('.././note/js/note.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -26,9 +27,3 @@ const loginDialog = new Vue({
     render: h => h(App)
 });
 
-const note = new Vue({
-    el: '.dialogBtn',
-    data: {
-        message: 'hello'
-    }
-});
