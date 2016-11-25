@@ -9,7 +9,6 @@
         "laravel/framework": "5.3.*",
         "tymon/jwt-auth": "^0.5.9",
         "barryvdh/laravel-cors": "^0.8.2",
-        "laravel/passport": "^1.0",
         "barryvdh/laravel-ide-helper": "^2.2"
     },
     "require-dev": {
