@@ -36,8 +36,5 @@ Elixir.webpack.mergeConfig({
 elixir(mix => {
     mix.sass('app.scss')
         .sass(['./resources/assets/note/sass/note.scss'], 'public/css/note.css')
-        .sass(['./node_modules/element-ui/packages/theme-default/lib/index'], 'public/css/vendor.css')
-        // .copy(, 'public/js/ele-vendor.js')
 		.webpack('app.js');
-		// .webpack(['./resources/assets/note/js/note.js'], 'public/js/note/note.js');
 });

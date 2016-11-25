@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -16,19 +15,9 @@ require('./bootstrap');
 // Vue.component('example', require('./components/Example.vue'));
 
 import Vue from 'vue';
-import ElementUI from 'element-ui';
 import App from './App.vue';
 
-Vue.use(ElementUI);
-
-const loginDialog = new Vue({
-    el: '#topLink',
-    render: h => h(App)
-});
-
-const note = new Vue({
-    el: '.dialogBtn',
-    data: {
-        message: 'hello'
-    }
+new Vue({
+	el: '#app',
+	render: h => h(App)
 });
