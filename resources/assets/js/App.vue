@@ -5,8 +5,6 @@
             <div class="title m-b-md">
                 {{ title }}
             </div>
-            <button @click="getTitle()">ALERT 1</button>
-
             <div class="links">
                 <a href="https://laravel.com/docs">Documentation</a>
                 <a href="https://laracasts.com">Laracasts</a>
@@ -28,11 +26,7 @@
 				title: 'Note'
 			}
 		},
-		methods   : {
-			getTitle() {
-				alert('123')
-			}
-		}
+		methods   : {}
 	};
 </script>
 
