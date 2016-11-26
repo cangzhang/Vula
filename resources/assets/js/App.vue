@@ -3,7 +3,7 @@
         <top-link></top-link>
         <div class="content">
             <div class="title m-b-md">
-                Note
+                {{ title }}
             </div>
             <button @click="getTitle()">ALERT 1</button>
 
@@ -18,20 +18,21 @@
 <script>
 	import TopLink from './components/TopLink.vue'
 
-	export default {
+	module.exports = {
+		name      : 'indexPage',
 		components: {
 			TopLink
 		},
-        data() {
+		data() {
 			return {
 				title: 'Note'
-            }
-        },
-        methods: {
+			}
+		},
+		methods   : {
 			getTitle() {
 				alert('123')
-            }
-        }
+			}
+		}
 	};
 </script>
 

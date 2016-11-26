@@ -7,19 +7,18 @@
 </template>
 
 <script>
-    console.info('in');
-	export default {
-		name:'topLink',
+	module.exports = {
+		name    : 'topLink',
 		data() {
 			return {
 				message: 'test'
 			}
 		},
-        computed: {
+		computed: {
 			msg() {
 				return this.message
-            }
-        }
+			}
+		}
 	};
 </script>
 
