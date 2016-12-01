@@ -13,8 +13,17 @@ require('./bootstrap');
  */
 
 import App from './App.vue';
+import UserControl from './components/UserControl.vue';
 
-new Vue({
-	el: '#app',
-	render: h => h(App)
-});
+if (!!$('#app').length) {
+    new Vue({
+        el    : '#app',
+        render: h => h(App)
+    });
+}
+
+if (!!$('#userControl').length) {
+    new Vue({
+        render: h => h(UserControl)
+    }).$mount('#userControl');
+}

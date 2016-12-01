@@ -18,8 +18,10 @@ require('bootstrap-sass');
 window.Vue = require('vue');
 require('vue-resource');
 
-window.MuseUI = require('muse-ui');
-Vue.use(MuseUI);
+Vue.config.devtools = false;
+
+/*window.MuseUI = require('muse-ui');
+Vue.use(MuseUI);*/
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
