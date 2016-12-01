@@ -20,7 +20,9 @@
     "babel": "^6.5.2",
     "bower": "^1.7.9",
     "buble": "^0.14.0",
+    "keycode": "^2.1.7",
     "lodash": "^4.16.2",
+    "muse-ui": "^2.0.0-alpha.11",
     "vue-loader": "^8.5.4"
   }
 }
