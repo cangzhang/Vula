@@ -25,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
     	//custom view prefix name
 	    $this->loadViewsFrom(base_path(). '/xzNotes/Note/Views', 'note');
+	    $this->loadViewsFrom(base_path(). '/xzNotes/Auth/Views', 'auth');
     }
 }

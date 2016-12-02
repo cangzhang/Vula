@@ -13,6 +13,7 @@
 
 Route::group(['middleware' => []], function () {
     Route::get('/', '\xzNotes\Note\Controllers\ShellController@mainPage');
+    Route::get('/login', '\xzNotes\Auth\Controllers\LoginController@loginPage');
 });
 
-Auth::routes();
+//Auth::routes();

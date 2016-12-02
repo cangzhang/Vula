@@ -18,10 +18,10 @@ use Illuminate\Http\Request;
 })->middleware('auth:api');*/
 
 Route::group(['middleware' => ['cors'], 'prefix' => ''], function () {
-    Route::post('register', 'Auth\ApiAuthController@register');     // register
-    Route::post('login', 'Auth\ApiAuthController@login');           // login
+    Route::post('register', '\xzNotes\Auth\Controllers\ApiAuthController@register');     // register
+    Route::post('login', '\xzNotes\Auth\Controllers\ApiAuthController@login');           // login
     Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::get('userInfo', 'Auth\ApiAuthController@getUserDetails');  // get user info
-        Route::get('logout', 'Auth\ApiAuthController@logout');  // get user info
+        Route::get('userInfo', '\xzNotes\Auth\Controllers\ApiAuthController@getUserDetails');  // get user info
+        Route::get('logout', '\xzNotes\Auth\Controllers\ApiAuthController@logout');  // get user info
     });
 });
