@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "node build/dev.js"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
@@ -19,10 +19,14 @@
   "dependencies": {
     "babel": "^6.5.2",
     "bower": "^1.7.9",
-    "buble": "^0.14.0",
+    "buble": "^0.14.2",
+    "buble-loader": "^0.3.2",
     "keycode": "^2.1.7",
     "lodash": "^4.16.2",
     "muse-ui": "^2.0.0-alpha.11",
-    "vue-loader": "^8.5.4"
+    "shelljs": "^0.7.5",
+    "vue-loader": "^10.0.2",
+    "vue-template-compiler": "^2.1.4",
+    "webpack": "^1.13.3"
   }
 }
