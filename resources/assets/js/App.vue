@@ -1,30 +1,20 @@
 <template>
-  <div class="flex-center position-ref full-height">
-    <top-link></top-link>
-    <div class="content">
-      <div class="title m-b-md">
-        {{ title }}
-      </div>
-    </div>
-  </div>
+  <nav-bar></nav-bar>
 </template>
 
 <script>
-	let TopLink = require('./components/TopLink.vue');
+	const NavBar = require('./components/NavBar.vue');
 
 	module.exports = {
-		name      : 'indexPage',
+		name      : 'index',
 		components: {
-			TopLink
+			NavBar
 		},
 		data() {
-			return {
-				title: 'Note'
-			}
+		  return {}
 		},
-		methods   : {}
+		methods: {}
 	};
-
 </script>
 
 <style>
