@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
 
-const commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+// const commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 
 console.log('--------in');
 
@@ -20,7 +20,7 @@ function getAllEntries() {
 }
 
 module.exports = {
-    plugins: [commonsPlugin],
+    // plugins: [commonsPlugin],
     entry  : getAllEntries(),
     output : {
         path    : 'public/js/',
@@ -34,7 +34,7 @@ module.exports = {
             },
             {
                 test   : /\.js$/,
-                exclude: /node_modules|bower_components/,
+                exclude: /node_modules/,
                 loader : 'babel-loader'
             },
             {

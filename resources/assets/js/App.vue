@@ -1,16 +1,16 @@
 <template>
-    <div class="flex-center position-ref full-height">
-        <top-link></top-link>
-        <div class="content">
-            <div class="title m-b-md">
-                {{ title }}
-            </div>
-        </div>
+  <div class="flex-center position-ref full-height">
+    <top-link></top-link>
+    <div class="content">
+      <div class="title m-b-md">
+        {{ title }}
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-	import TopLink from './components/TopLink.vue'
+	let TopLink = require('./components/TopLink.vue');
 
 	module.exports = {
 		name      : 'indexPage',

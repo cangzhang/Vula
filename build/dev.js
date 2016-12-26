@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const webpackConfig = require('../webpackOnly.config.js');
+let toast = require('node-notifier');
 require('shelljs/global');
 
 console.log('---------dev');
@@ -26,4 +27,5 @@ compiler.watch({ // watch options:
         chunks: false, // Makes the build much quieter
         colors: true
     }));
+    toast.notify('Build completed');
 });
