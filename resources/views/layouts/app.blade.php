@@ -4,27 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
-    <!-- Scripts -->
     <script>
-      window.Laravel = <?php echo json_encode([
-        'csrfToken' => csrf_token(),
-      ]); ?>
+      window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
     </script>
 </head>
+
 <body>
 <div id="app">
-    <div id="app-content">
-
-    </div>
+    @if (Auth::check())
+        <nav-log-out></nav-log-out>
+    @else
+        <nav-login></nav-login>
+    @endif
+    <div id="main"></div>
     {{--<li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             <span class="caret"></span>
@@ -47,7 +43,7 @@
     </li>--}}
 </div>
 
-@yield('content')
+{{--@yield('content')--}}
 
 <!-- Scripts -->
 <script src="{{ asset('/js/app.js') }}"></script>

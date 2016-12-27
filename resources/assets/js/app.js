@@ -1,8 +1,8 @@
-require('./bootstrap');
+require('./bootstrap')(() => {
+    const App = require('./App.vue');
 
-import AppContent from './App.vue';
-
-new Vue({
-  el: '#app-content',
-  render: h => h(AppContent)
+    new Vue({
+        el: '#main',
+        render: h => h(App)
+    });
 });
