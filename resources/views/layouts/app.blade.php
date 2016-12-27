@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="/css/app.css" rel="stylesheet">
     <script>
-      window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
+        window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
     </script>
 </head>
 
@@ -18,7 +18,9 @@
     @if (Auth::check())
         <nav-log-out></nav-log-out>
     @else
-        <nav-login></nav-login>
+        <div class="login" id="login">
+            <nav-login></nav-login>
+        </div>
     @endif
     <div id="main"></div>
     {{--<li class="dropdown">

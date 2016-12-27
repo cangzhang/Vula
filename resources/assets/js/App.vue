@@ -1,19 +1,15 @@
 <template>
-    <nav-bar></nav-bar>
+    <span>This is the container.</span>
 </template>
 
 <script>
-	const NavBar = require('./components/NavBar.vue');
+	const NavLogin = require('./components/NavBar.vue');
 
 	module.exports = {
 		name      : 'index',
 		components: {
-			NavBar
-		},
-		data() {
-		  return {}
-		},
-		methods: {}
+			NavLogin
+		}
 	};
 </script>
 
