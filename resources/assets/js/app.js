@@ -3,12 +3,12 @@ require('./bootstrap')(() => {
     const NavLogin = require('./components/NavBar.vue');
 
     new Vue({
-        el: '#main',
+        el    : '#main',
         render: h => h(App)
     });
 
-    new Vue({
-        el: '#login',
+    /*new Vue({
+        el    : '#login',
         render: h => h(NavLogin)
-    });
+    });*/
 });

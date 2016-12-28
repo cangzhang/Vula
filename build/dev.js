@@ -11,8 +11,8 @@ webpackConfig.output.pathinfo = true;
 webpackConfig.progress = true;
 webpackConfig.displayErrorDetails = true;
 
-rm('-rf',  webpackConfig.output.path);
-mkdir('-p',  webpackConfig.output.path);
+rm('-rf', webpackConfig.output.path);
+mkdir('-p', webpackConfig.output.path);
 
 let compiler = webpack(webpackConfig);
 

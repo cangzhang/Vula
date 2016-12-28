@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 console.log('--------in');
 
-function getAllEntries() {
+function getAllEntries () {
     let files = glob.sync('./xzNotes/*/webpackEntry.js');
     let allEntries = {};
     let featureEntries = {};
@@ -21,15 +21,15 @@ function getAllEntries() {
 
 module.exports = {
     // plugins: [commonsPlugin],
-    entry  : getAllEntries(),
-    output : {
+    entry : getAllEntries(),
+    output: {
         path    : 'public/js/',
         filename: '[name].js'
     },
-    module : {
+    module: {
         loaders: [
             {
-                test: /\.vue$/,
+                test  : /\.vue$/,
                 loader: 'vue'
             },
             {

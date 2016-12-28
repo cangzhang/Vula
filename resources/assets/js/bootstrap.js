@@ -15,8 +15,12 @@ function bootstrap (callback, additional) {
         request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
         next();
     });
+
     callback();
-    additional();
+
+    if (typeof additional === 'function') {
+        additional();
+    }
 }
 
 module.exports = (callback, additional) => {

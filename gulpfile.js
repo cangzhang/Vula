@@ -1,20 +1,8 @@
 const elixir = require('laravel-elixir');
 const path = require('path');
 
-// require('laravel-elixir-vue');
 require('laravel-elixir-vue-2');
 require('laravel-elixir-webpack-official');
-
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
 
 Elixir.webpack.config.module.loaders = [];
 
