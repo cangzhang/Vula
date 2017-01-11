@@ -43,6 +43,9 @@ class LoginController extends Controller
         return 'username';
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function loginPage() {
         return view('Vula::login');
     }
