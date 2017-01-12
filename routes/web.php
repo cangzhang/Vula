@@ -13,8 +13,8 @@ Route::post('login', '\Vula\Controllers\LoginController@userLogin');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::get('register', '\Vula\Controllers\RegisterController@regView')->name('register');
+Route::post('register', '\Vula\Controllers\RegisterController@reg');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
