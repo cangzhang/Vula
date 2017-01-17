@@ -15,7 +15,6 @@ class AlterNameToUsername extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('name', 'username');
-            $table->mediumText('description')->nullable();
         });
     }
 

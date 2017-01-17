@@ -9,12 +9,12 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 
 Route::get('login', '\Vula\Controllers\LoginController@loginPage')->name('loginPage');
-Route::post('login', '\Vula\Controllers\LoginController@userLogin');
+Route::post('login', '\Vula\Controllers\ApiLoginController@userLogin');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
 Route::get('register', '\Vula\Controllers\RegisterController@regView')->name('register');
-Route::post('register', '\Vula\Controllers\RegisterController@reg');
+Route::post('register', '\Vula\Controllers\ApiRegisterController@signUp');
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
