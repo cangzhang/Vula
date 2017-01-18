@@ -36,6 +36,40 @@ class ApiLoginController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     */
+    public function ApiLogin(Request $request)
+    {
+        if ($request->isJson() || $request->ajax()) {
+            $credentials = [];
+            $credentials['username'] = $request->json('username');
+            $credentials['password'] = $request->json('password');
+
+            $this->validate($request, [
+                $this->username() => 'required',
+                'password'        => 'required',
+            ]);
+
+            if (\Auth::attempt($credentials)) {
+                //TODO
+            }
+            if ($this->hasTooManyLoginAttempts($request)) {
+                $this->fireLockoutEvent($request);
+
+                return $this->sendLockoutResponse($request);
+            }
+
+
+            $this->incrementLoginAttempts($request);
+
+            return $this->sendFailedLoginResponse($request);
+        } else {
+            abort(403, 'Unauthorized action.');
+        }
+    }
+
+    /**
      * @return string
      */
     public function username()
