@@ -36,6 +36,11 @@ class ApiRegisterController extends Controller
         return $this->register($request);
     }
 
+    public function ApiRegister(Request $request)
+    {
+
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *

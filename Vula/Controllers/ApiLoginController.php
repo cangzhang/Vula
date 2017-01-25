@@ -65,8 +65,6 @@ class ApiLoginController extends Controller
 
                 return $this->sendLockoutResponse($request);
             }
-
-
             $this->incrementLoginAttempts($request);
 
             return $this->sendFailedLoginResponse($request);
@@ -81,13 +79,6 @@ class ApiLoginController extends Controller
     public function username()
     {
         return 'username';
-    }
-
-    function loginResponse($credentials)
-    {
-        $user = new User();
-        $userInfo = $user->where('username', $credentials['username'])->first();
-
     }
 
 }
