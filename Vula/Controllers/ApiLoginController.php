@@ -5,6 +5,7 @@ namespace Vula\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Vula\User;
 
 class ApiLoginController extends Controller
 {
@@ -42,17 +43,23 @@ class ApiLoginController extends Controller
     public function ApiLogin(Request $request)
     {
         if ($request->isJson() || $request->ajax()) {
-            $credentials = [];
-            $credentials['username'] = $request->json('username');
-            $credentials['password'] = $request->json('password');
+            $credentials = [
+                'username' => $request->json('username'),
+                'password' => $request->json('password')
+            ];
 
             $this->validate($request, [
                 $this->username() => 'required',
                 'password'        => 'required',
             ]);
 
-            if (\Auth::attempt($credentials)) {
-                //TODO
+            if (\Auth::attempt($credentials, $request->has('remember'))) {
+                $user = new User();
+                $user->updateToken($credentials['username']);
+                $userInfo = User::where('username', $credentials['username'])->first();
+                $userInfo->token = $userInfo->remember_token;
+
+                return response()->json($userInfo);
             }
             if ($this->hasTooManyLoginAttempts($request)) {
                 $this->fireLockoutEvent($request);
@@ -75,6 +82,13 @@ class ApiLoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    function loginResponse($credentials)
+    {
+        $user = new User();
+        $userInfo = $user->where('username', $credentials['username'])->first();
+
     }
 
 }
