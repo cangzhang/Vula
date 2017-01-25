@@ -56,10 +56,9 @@ class ApiLoginController extends Controller
             if (\Auth::attempt($credentials, $request->has('remember'))) {
                 $user = new User();
                 $user->updateToken($credentials['username']);
-                $userInfo = User::where('username', $credentials['username'])->first();
-                $userInfo->token = $userInfo->remember_token;
+                $response = $user->getUserInfo($credentials['username']);
 
-                return response()->json($userInfo);
+                return response()->json($response, $response->status);
             }
             if ($this->hasTooManyLoginAttempts($request)) {
                 $this->fireLockoutEvent($request);

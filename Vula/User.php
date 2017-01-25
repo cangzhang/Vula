@@ -27,6 +27,22 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @param $username
+     * @return mixed
+     */
+    public function getUserInfo($username)
+    {
+        $userInfo = User::where('username', $username)->first();
+        $userInfo->token = $userInfo->remember_token;
+        $userInfo->status = 200;
+
+        return $userInfo;
+    }
+
+    /**
+     * @param $username
+     */
     public function updateToken($username)
     {
         $user = User::where('username', $username)->first();
