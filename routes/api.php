@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
+/*Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:api');
+})->middleware('auth:api');*/
 
 Route::post('/login', '\Vula\Controllers\ApiLoginController@ApiLogin')->name('api.login');
-Route::post('/register', '\Vula\Controllers\ApiLoginController@ApiRegister')->name('api.register');
+Route::post('/register', '\Vula\Controllers\ApiRegisterController@ApiRegister')->name('api.register');

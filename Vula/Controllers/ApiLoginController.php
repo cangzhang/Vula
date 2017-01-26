@@ -33,7 +33,19 @@ class ApiLoginController extends Controller
      */
     public function userLogin(Request $request)
     {
-        return $this->login($request);
+        $this->validateLogin($request);
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+            return $this->sendLockoutResponse($request);
+        }
+        if ($this->attemptLogin($request)) {
+            $user = new User();
+            $user->updateToken($request['username']);
+            return $this->sendLoginResponse($request);
+        }
+
+        $this->incrementLoginAttempts($request);
+        return $this->sendFailedLoginResponse($request);
     }
 
     /**

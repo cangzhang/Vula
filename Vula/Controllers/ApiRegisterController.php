@@ -5,6 +5,7 @@ namespace Vula\Controllers;
 use Vula\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -33,12 +34,22 @@ class ApiRegisterController extends Controller
      */
     public function signUp(Request $request)
     {
-        return $this->register($request);
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+        $user = new User();
+        $user->updateToken($request['username']);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 
     public function ApiRegister(Request $request)
     {
-
+        $validator = $this->validator($request->all());
+        $validator->validate();
     }
 
     /**
@@ -67,7 +78,7 @@ class ApiRegisterController extends Controller
         return User::create([
             'username' => $data['username'],
             'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
+            //'password' => bcrypt($data['password']),
         ]);
     }
 }
