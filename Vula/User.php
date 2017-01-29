@@ -31,12 +31,13 @@ class User extends Authenticatable
      * @param $username
      * @return mixed
      */
-    public function getUserInfo($username)
+    public function getUserInfo($username, $login = true)
     {
         $userInfo = User::where('username', $username)->first();
         $userInfo->token = $userInfo->remember_token;
-        $userInfo->status = 200;
+        $userInfo->status = $login ? 200 : 201;
 
+        unset($userInfo->password);
         return $userInfo;
     }
 
