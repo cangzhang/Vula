@@ -2,15 +2,12 @@ const path = require('path');
 const glob = require('glob');
 
 function getAllEntries () {
-    let files = glob.sync('./xzNotes/*/webpackEntry.js');
+    let entries = require('./Vula/Entry/entry.js');
     let allEntries = {};
-    let featureEntries = {};
-    for (let i = 0; i < files.length; i++) {
-        featureEntries = require(files[i]);
-        for (let entry in featureEntries) {
-            allEntries[entry] = '.' + featureEntries[entry];
-        }
+    for (let entryName in entries) {
+        allEntries[entryName] = '.' + entries[entryName];
     }
+    console.log(allEntries);
     return allEntries;
 }
 
