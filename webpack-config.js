@@ -1,6 +1,8 @@
 const path = require('path');
 const glob = require('glob');
 
+require("babel-polyfill");
+
 function getAllEntries () {
     let entries = require('./Vula/Entry/entry.js');
     let allEntries = {};
@@ -14,15 +16,17 @@ function getAllEntries () {
 module.exports = {
     // plugins: [commonsPlugin],
     entry : getAllEntries(),
-    output: {
-        path    : 'public/js/',
-        filename: '[name].js'
+    output : {
+        path         : path.resolve(__dirname, 'public/webpack'),
+        publicPath   : "/webpack/",
+        filename     : '[name].js',
+        chunkFilename: '[id].[chunkhash].js',
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test  : /\.vue$/,
-                loader: 'vue'
+                loader: 'vue-loader'
             },
             {
                 test   : /\.js$/,
@@ -30,12 +34,12 @@ module.exports = {
                 loader : 'babel-loader'
             },
             {
-                test  : /\.css$/,
-                loader: 'style!css!'
+                test: /\.css$/,
+                use : ["style-loader", "css-loader"]
             },
             {
                 test  : /\.(sass|scss)/,
-                loader: "style!css!sass"
+                use : ["style-loader", "css-loader", "sass-loader"]
             }]
     }
 };
