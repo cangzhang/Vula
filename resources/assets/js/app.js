@@ -1,9 +1,11 @@
-function bootstrap(callback) {
-    require('./bootstrap');
+function bootstrap (callback) {
+    const Vue = require('./bootstrap')
+    const App = require('../../../Vula/Resources/vue/app.vue')
 
-    const app = new Vue({
-        el: '#app'
-    });
+    new Vue({
+        el    : '#app-container',
+        render: h => h(App)
+    })
 
     if (typeof callback === 'function') {
         callback();

@@ -15,9 +15,7 @@
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
-        'csrfToken' => csrf_token(),
-      ]); ?>
+        window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?>
     </script>
 </head>
 <body>
@@ -63,8 +61,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ url('/logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
@@ -80,7 +77,6 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
 </div>
 
