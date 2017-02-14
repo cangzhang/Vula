@@ -1,5 +1,8 @@
 {
   "private": true,
+  "babel": {
+    "presets": ["es2015", "stage-2"]
+  },
   "scripts": {
     "prod": "gulp --production",
     "dev": "gulp watch",

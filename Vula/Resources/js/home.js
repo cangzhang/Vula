@@ -1,4 +1,4 @@
-let bootstrap = require('../../../resources/assets/js/app');
+import bootstrap from '../../../resources/assets/js/app'
 
 bootstrap(() => {
     // return require('');

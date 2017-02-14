@@ -10,6 +10,6 @@ function bootstrap(callback) {
     }
 }
 
-module.exports = (callback) => {
+export default function (callback) {
     bootstrap(callback);
 };
