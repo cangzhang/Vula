@@ -1,4 +1,4 @@
-function up(callback, additional) {
+function bootstrap(callback) {
     require('./bootstrap');
 
     const app = new Vue({
@@ -10,6 +10,6 @@ function up(callback, additional) {
     }
 }
 
-module.exports = (callback, additional) => {
-    up(callback, additional);
+module.exports = (callback) => {
+    bootstrap(callback);
 };

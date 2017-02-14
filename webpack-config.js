@@ -3,6 +3,10 @@ const glob = require('glob');
 
 require("babel-polyfill");
 
+function assetsPath (_path) {
+    return 'static/' + _path;
+}
+
 function getAllEntries () {
     let entries = require('./Vula/Entry/entry.js');
     let allEntries = {};
@@ -16,7 +20,7 @@ function getAllEntries () {
 module.exports = {
     // plugins: [commonsPlugin],
     entry : getAllEntries(),
-    output : {
+    output: {
         path         : path.resolve(__dirname, 'public/webpack'),
         publicPath   : "/webpack/",
         filename     : '[name].js',
@@ -25,21 +29,40 @@ module.exports = {
     module: {
         rules: [
             {
-                test  : /\.vue$/,
-                loader: 'vue-loader'
+                test   : /\.vue$/,
+                exclude: '/node_modules/',
+                loader : 'vue-loader',
+                options: {
+                    js: 'babel-loader'
+                }
             },
             {
                 test   : /\.js$/,
                 exclude: /node_modules/,
-                loader : 'babel-loader'
+                loader : 'babel-loader',
+                query  : {
+                    presets: ['es2015']
+                }
             },
             {
-                test: /\.css$/,
-                use : ["style-loader", "css-loader"]
-            },
-            {
-                test  : /\.(sass|scss)/,
+                test: /\.(sass|scss|css)/,
                 use : ["style-loader", "css-loader", "sass-loader"]
-            }]
+            },
+            {
+                test   : /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader : 'file-loader',
+                options: {
+                    name: assetsPath('images/[name].[ext]?[hash]')
+                }
+            },
+            {
+                test  : /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                query : {
+                    limit: 10000,
+                    name : assetsPath('fonts/[name].[hash:7].[ext]')
+                }
+            }
+        ]
     }
 };
