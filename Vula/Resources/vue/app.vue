@@ -3,7 +3,6 @@
 </template>
 
 <script>
-    console.log('app')
     export default {
         data() {
             return {
